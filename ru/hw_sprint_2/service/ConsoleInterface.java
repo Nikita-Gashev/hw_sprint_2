@@ -1,16 +1,24 @@
-package src;
+package ru.hw_sprint_2.service;
 
 import java.util.Scanner;
 
-public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        ReportMaker reportMaker = new ReportMaker();
-        boolean isGetMonthlyReport = false;
-        boolean isGetYearlyReport = false;
+public class ConsoleInterface {
+    private Scanner scanner = new Scanner(System.in);
+    private ReportMaker reportMaker = new ReportMaker();
+    private boolean isGetMonthlyReport = false;
+    private boolean isGetYearlyReport = false;
+
+    public void printMenu() {
 
         while (true) {
-            printMenu();
+            System.out.println(""" 
+                    Что Вы хотите сделать?
+                    1 - Считать все месячные отчеты
+                    2 - Считать годовй отчет
+                    3 - Сверить отчеты
+                    4 - Ввести информацию обо всех месячных отчетах
+                    5 - Вывести информацию о годовом отчете
+                    6 - Выйти""");
 
             int i = scanner.nextInt();
             switch (i) {
@@ -54,15 +62,6 @@ public class Main {
             }
         }
     }
-
-    public static void printMenu() {
-        System.out.println(""" 
-                Что Вы хотите сделать?
-                1 - Считать все месячные отчеты
-                2 - Считать годовй отчет
-                3 - Сверить отчеты
-                4 - Ввести информацию обо всех месячных отчетах
-                5 - Вывести информацию о годовом отчете
-                6 - Выйти""");
-    }
 }
+
+

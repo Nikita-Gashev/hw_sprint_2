@@ -1,17 +1,18 @@
-package src;
+package ru.hw_sprint_2.model;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
+import java.util.Map;
 
-class MonthlyReport {
-    private HashMap<String, ArrayList<Transaction>> monthlyReport = new HashMap<>();
+public class MonthlyReport {
+    private Map<String, List<Transaction>> monthlyReport = new HashMap<>();
 
-    void putData(String month, ArrayList<Transaction> data) {
+    public void putData(String month, List<Transaction> data) {
         monthlyReport.put(month, data);
     }
 
-    int getSumIncomePerMonth(String month) {
-        ArrayList<Transaction> transactions = monthlyReport.get(month);
+    public int getSumIncomePerMonth(String month) {
+        List<Transaction> transactions = monthlyReport.get(month);
         int sumIncome = 0;
         for (Transaction transaction : transactions) {
             if (!transaction.isExpense) {
@@ -21,19 +22,19 @@ class MonthlyReport {
         return sumIncome;
     }
 
-    int getSumConsumptionPerMonth(String month) {
-        ArrayList<Transaction> transactions = monthlyReport.get(month);
-        int sumConsumption = 0;
+    public int getSumExpensesPerMonth(String month) {
+        List<Transaction> transactions = monthlyReport.get(month);
+        int sumExpenses = 0;
         for (Transaction transaction : transactions) {
             if (transaction.isExpense) {
-                sumConsumption = sumConsumption + transaction.quantity * transaction.unitPrice;
+                sumExpenses = sumExpenses + transaction.quantity * transaction.unitPrice;
             }
         }
-        return sumConsumption;
+        return sumExpenses;
     }
 
-    int findMaxIncomeValuePerMonth(String month) {
-        ArrayList<Transaction> transactions = monthlyReport.get(month);
+    public int findMaxIncomeValuePerMonth(String month) {
+        List<Transaction> transactions = monthlyReport.get(month);
         int maxIncome = 0;
         for (Transaction transaction : transactions) {
             if (!transaction.isExpense) {
@@ -46,8 +47,8 @@ class MonthlyReport {
         return maxIncome;
     }
 
-    String findMaxIncomeValueNamePerMonth(String month) {
-        ArrayList<Transaction> transactions = monthlyReport.get(month);
+    public String findMaxIncomeNamePerMonth(String month) {
+        List<Transaction> transactions = monthlyReport.get(month);
         int maxIncome = 0;
         String nameMaxIncome = "";
         for (Transaction transaction : transactions) {
@@ -62,34 +63,34 @@ class MonthlyReport {
         return nameMaxIncome;
     }
 
-    int findMaxConsumptionValuePerMonth(String month) {
-        ArrayList<Transaction> transactions = monthlyReport.get(month);
-        int maxConsumption = 0;
+    public int findMaxExpenseValuePerMonth(String month) {
+        List<Transaction> transactions = monthlyReport.get(month);
+        int maxExpense = 0;
         for (Transaction transaction : transactions) {
             if (transaction.isExpense) {
-                int consumption = transaction.quantity * transaction.unitPrice;
-                if (consumption > maxConsumption) {
-                    maxConsumption = consumption;
+                int expense = transaction.quantity * transaction.unitPrice;
+                if (expense > maxExpense) {
+                    maxExpense = expense;
                 }
             }
         }
-        return maxConsumption;
+        return maxExpense;
     }
 
-    String findMaxConsumptionValueNamePerMonth(String month) {
-        ArrayList<Transaction> transactions = monthlyReport.get(month);
-        int maxConsumption = 0;
-        String nameMaxConsumption = "";
+    public String findMaxExpenseNamePerMonth(String month) {
+        List<Transaction> transactions = monthlyReport.get(month);
+        int maxExpense = 0;
+        String nameMaxExpense = "";
         for (Transaction transaction : transactions) {
             if (transaction.isExpense) {
                 int income = transaction.quantity * transaction.unitPrice;
-                if (income > maxConsumption) {
-                    maxConsumption = income;
-                    nameMaxConsumption = transaction.name;
+                if (income > maxExpense) {
+                    maxExpense = income;
+                    nameMaxExpense = transaction.name;
                 }
             }
         }
-        return nameMaxConsumption;
+        return nameMaxExpense;
     }
 
 

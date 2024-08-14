@@ -1,12 +1,12 @@
-package src;
+package ru.hw_sprint_2.util;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
-class FileReader {
-    ArrayList<String> readFileContents(String fileName) {
+public class FileReader {
+    public ArrayList<String> readFileContents(String fileName) {
         String path = "./resources/" + fileName;
         try {
             return new ArrayList<>(Files.readAllLines(Path.of(path)));
